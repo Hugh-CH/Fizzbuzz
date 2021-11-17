@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Text;
 
 namespace Fizzbuzz
 {
@@ -15,6 +17,24 @@ namespace Fizzbuzz
             {
                 return string.Empty;
             }
+        }
+
+        static string ReorderString(string message)
+        {
+            StringBuilder sb = new StringBuilder();
+            
+            for (int i = 1; i < message.Length; i++)
+            {
+                if (i % 4 == 0)
+                    sb.Append(' ');
+                sb.Append(message[i]);
+            }
+
+            string with_spaces = sb.ToString();
+            string[] array = with_spaces.Split(' ');
+            Array.Reverse(array);
+            message = string.Join("", array);
+            return message;
         }
 
         static void FizzBuzz(int maxNumber)
@@ -47,6 +67,7 @@ namespace Fizzbuzz
         static void Main()
         {
             FizzBuzz(143);
+            //Console.WriteLine(ReorderString("aaaabbbbccccdddd"));
         }
     }
 }
