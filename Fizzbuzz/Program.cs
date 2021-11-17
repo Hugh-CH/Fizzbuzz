@@ -20,7 +20,7 @@ namespace Fizzbuzz
             }
         }
 
-        static string ReorderString(string message)
+        static string ReorderWords(string message)
         {
             StringBuilder sb = new StringBuilder();
             
@@ -67,7 +67,7 @@ namespace Fizzbuzz
 
                 if (IsMultiple(i, 17))
                 {
-                    text = ReorderString(text);
+                    text = ReorderWords(text);
                 }
                 
                 if (text == string.Empty)
