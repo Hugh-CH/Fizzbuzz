@@ -1,7 +1,10 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Transactions;
 
 namespace Fizzbuzz
 {
@@ -80,10 +83,21 @@ namespace Fizzbuzz
                 }
             }
         }
-        
+
+        static int WelcomeMessage()
+        {
+            Console.WriteLine("Welcome to FizzBuzz");
+            Console.WriteLine("===================");
+            Console.WriteLine("Enter max. number:");
+            int maximum = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("===================");
+            return maximum;
+        }
+
         static void Main()
         {
-            FizzBuzz(143);
+            int maxNumber = WelcomeMessage();
+            FizzBuzz(maxNumber);
         }
     }
 }
