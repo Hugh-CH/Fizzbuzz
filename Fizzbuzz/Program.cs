@@ -21,16 +21,17 @@ namespace Fizzbuzz
         {
             for (int i = 1; i < maxNumber+1; i++)
             {
-                string text = IsMultiple(i, 3, "Fizz") + IsMultiple(i, 5, "Buzz") + IsMultiple(i,7,"Bang");
+                string text = IsMultiple(i, 3, "Fizz") + IsMultiple(i, 5, "Buzz") + IsMultiple(i,7,"Bang")+IsMultiple(i,11,"Bong");
                 if (text == string.Empty)
                 {
                     Console.WriteLine(i);
                 }
+                else if(text.Contains("Bong"))
+                    Console.WriteLine("Bong");
                 else
                 {
                     Console.WriteLine(text);
                 }
-                // Console.WriteLine(i+IsMultiple(i,3,"Fizz")+IsMultiple(i,5,"Buzz"));
             }
         }
         
