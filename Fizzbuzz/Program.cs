@@ -21,13 +21,22 @@ namespace Fizzbuzz
         {
             for (int i = 1; i < maxNumber+1; i++)
             {
-                string text = IsMultiple(i, 3, "Fizz") + IsMultiple(i, 5, "Buzz") + IsMultiple(i,7,"Bang")+IsMultiple(i,11,"Bong");
+                string text = IsMultiple(i, 3, "Fizz") + IsMultiple(i,13,"Fezz") + IsMultiple(i, 5, "Buzz") + IsMultiple(i,7,"Bang")+IsMultiple(i,11,"Bong");
                 if (text == string.Empty)
                 {
                     Console.WriteLine(i);
                 }
-                else if(text.Contains("Bong"))
-                    Console.WriteLine("Bong");
+                else if (text.Contains("Bong"))
+                {
+                    if (text.Contains("Fezz"))
+                    {
+                        Console.WriteLine("FezzBong");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Bong");
+                    }
+                }
                 else
                 {
                     Console.WriteLine(text);
@@ -37,7 +46,7 @@ namespace Fizzbuzz
         
         static void Main()
         {
-            FizzBuzz(100);
+            FizzBuzz(143);
         }
     }
 }
