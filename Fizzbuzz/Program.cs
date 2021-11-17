@@ -24,7 +24,7 @@ namespace Fizzbuzz
         {
             for (int i = 0; i < 5; i++)
             {
-                Console.WriteLine(IsMultiple(i,3,"test"));
+                Console.WriteLine(i+IsMultiple(i,3,"Fizz"));
             }
         }
     }
