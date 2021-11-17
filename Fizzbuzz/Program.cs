@@ -20,6 +20,16 @@ namespace Fizzbuzz
             }
         }
 
+        static string AppendWordIfMultiple(int number,int divider, string word,string text)
+        {
+            if (IsMultiple(number, divider))
+            {
+                text += word;
+            }
+
+            return text;
+        }
+
         static string ReorderWords(string message)
         {
             StringBuilder sb = new StringBuilder();
@@ -44,22 +54,12 @@ namespace Fizzbuzz
             {
                 string text = string.Empty;
 
-                if (IsMultiple(i, 3))
-                {
-                    text += "Fizz";
-                }
-                if (IsMultiple(i, 13))
-                {
-                    text += "Fezz";
-                }
-                if (IsMultiple(i, 5))
-                {
-                    text += "Buzz";
-                }
-                if (IsMultiple(i, 7))
-                {
-                    text += "Bang";
-                }
+                text = AppendWordIfMultiple(i, 3 , "Fizz", text);
+                text = AppendWordIfMultiple(i, 13, "Fezz", text);
+                text = AppendWordIfMultiple(i, 5 , "Buzz", text);
+                text = AppendWordIfMultiple(i, 7 , "Bang", text);
+                
+                
                 if (IsMultiple(i, 11))
                 {
                     text = IsMultiple(i, 13) ? "FezzBong" : "Bong";
@@ -83,7 +83,7 @@ namespace Fizzbuzz
         
         static void Main()
         {
-            FizzBuzz(195);
+            FizzBuzz(143);
         }
     }
 }
