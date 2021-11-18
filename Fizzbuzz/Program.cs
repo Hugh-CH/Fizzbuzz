@@ -1,10 +1,6 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Transactions;
+using System.Collections.Generic;
+
 
 namespace Fizzbuzz
 {
@@ -23,39 +19,22 @@ namespace Fizzbuzz
             }
         }
 
-        static string AppendWordIfMultiple(int number,int divider, string word,string text)
+        static List<string> AppendWordIfMultiple(int number,int divider, string word,List<string> text)
         {
             if (IsMultiple(number, divider))
             {
-                text += word;
+                text.Add(word);
             }
 
             return text;
         }
-
-        static string ReorderWords(string message)
-        {
-            StringBuilder sb = new StringBuilder();
-            
-            for (int i = 0; i < message.Length; i++)
-            {
-                if (i % 4 == 0)
-                    sb.Append(' ');
-                sb.Append(message[i]);
-            }
-
-            string withSpaces = sb.ToString();
-            string[] array = withSpaces.Split(' ');
-            Array.Reverse(array);
-            message = string.Join("", array);
-            return message;
-        }
-
+        
         static void FizzBuzz(int maxNumber)
         {
             for (int i = 1; i < maxNumber+1; i++)
             {
-                string text = string.Empty;
+                List<string> text = new List<string>();
+                
 
                 text = AppendWordIfMultiple(i, 3 , "Fizz", text);
                 text = AppendWordIfMultiple(i, 13, "Fezz", text);
@@ -65,26 +44,30 @@ namespace Fizzbuzz
                 
                 if (IsMultiple(i, 11))
                 {
-                    text = IsMultiple(i, 13) ? "FezzBong" : "Bong";
+                    text = new List<string>() {"Bong"};
+                    if (IsMultiple(i, 13))
+                    {
+                        text.Insert(0,"Fezz");
+                    }
                 }
 
                 if (IsMultiple(i, 17))
                 {
-                    text = ReorderWords(text);
+                    text.Reverse();
                 }
-                
-                if (text == string.Empty)
+
+                if (text.Count == 0)
                 {
-                    Console.WriteLine(i);
+                     Console.WriteLine(i);
                 }
                 else
                 {
-                    Console.WriteLine(text);
+                     Console.WriteLine(string.Join("",text));
                 }
             }
         }
 
-        static int WelcomeMessage()
+        static int WelcomeQuestion()
         {
             Console.WriteLine("Welcome to FizzBuzz");
             Console.WriteLine("===================");
@@ -96,7 +79,7 @@ namespace Fizzbuzz
 
         static void Main()
         {
-            int maxNumber = WelcomeMessage();
+            int maxNumber = WelcomeQuestion();
             FizzBuzz(maxNumber);
         }
     }
